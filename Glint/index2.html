@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Split Background Layout</title>
+  <style>
+    /* Reset and Basic Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+
+    .split-container {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .black-section {
+      height: 600px;
+      width: 100%;
+      background-color: #000;
+    }
+
+    .white-section {
+      height: 50%;
+      width: 100%;
+      background-color: #fff;
+    }
+
+    .content {
+      position: absolute;
+      top: 20%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .content h1 {
+      font-size: 1em;
+      color: rgb(14, 173, 14);
+      letter-spacing: 2px;
+    }
+
+    p {
+      color: white;
+      font-size: 2.5em;
+      margin-top: 20px;
+    }
+
+    .images-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: -300px;
+    }
+
+    .images-row {
+      display: flex;
+      justify-content: center;
+    }
+
+    .images-row img {
+      width: 500px;
+      height: 600px;
+      object-fit: cover;
+      margin: 0;
+      /* Remove margin to eliminate gaps */
+      transition: transform 0.7s ease;
+    }
+
+    .images-row img:hover {
+      transform: scale(.9);
+      filter: brightness(50%);
+      z-index: 1;
+    }
+
+    /* Removing Gap Between Images Horizontally */
+    .images-row img+img {
+      margin-left: -4px;
+    }
+
+    /* Padding Between Rows */
+    .images-row+.images {
+      margin-top: 0px;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .images-row {
+        flex-direction: row;
+        gap: 0;
+      }
+
+      .images-row img {
+        width: 200px;
+        height: 300px;
+      }
+
+      .content h1 {
+        font-size: 1.5em;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="split-container">
+    <!-- Black Section -->
+    <div class="black-section"></div>
+
+    <!-- Content Section -->
+    <div class="content">
+      <h1>Recant Work</h1>
+      <p>We love what we do, check out some of our latest works</p>
+    </div>
+
+    <!-- Image Layout -->
+    <div class="images-container">
+      <!-- First Row of Images -->
+      <div class="images-row">
+        <div class="image-wrapper">
+          <img src="images/portfolio/lady-shutterbug.jpg" alt="Photographer">
+        </div>
+        <div class="image-wrapper">
+          <img src="images/portfolio/woodcraft.jpg" alt="Chair">
+        </div>
+      </div>
+
+      <!-- Second Row of Images -->
+      <div class="images-row">
+        <img src="images/portfolio/guitarist.jpg" alt="Nature">
+        <img src="images/portfolio/the-beetle.jpg" alt="Art">
+      </div>
+
+      <!-- 3rd row of images? -->
+      <div class="images-row">
+        <img src="images/portfolio/grow-green.jpg" alt="Cityscape">
+        <img src="images/portfolio/palmeira.jpg" alt="Abstract Pattern">
+      </div>
+    </div>
+
+    <!-- White Section -->
+    <div class="white-section"></div>
+  </div>
+</body>
+
+</html>
